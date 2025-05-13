@@ -1,0 +1,1 @@
+I’ve implemented the backend using Node.js (Express + MongoDB) instead of Django as I’m more proficient and confident in delivering a production-ready solution with it. However, I’ve ensured that all the required features and authentication flows are implemented as per the assessment.
