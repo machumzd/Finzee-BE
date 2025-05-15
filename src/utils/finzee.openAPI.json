@@ -1,0 +1,518 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Finzee",
+    "description": "NB: User registration/login endpoint. Upon successful login, a JWT Bearer token is returned. This token must be copied and used in the 'Authorize' button below as a Bearer token for all secured endpoints.",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "servers": [
+    {
+      "url": "https://finzee-be.onrender.com"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/api/auth": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Get Users",
+        "description": "",
+        "operationId": "getapiauth",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "users": [
+                      {
+                        "_id": "68233f3fd6d79ed475e1140",
+                        "name": "Abdul Mazood",
+                        "email": "machumzdofcl@gmail.com",
+                        "__v": 0
+                      },
+                      {
+                        "_id": "682370d79a6a31df1c9e9",
+                        "name": "Abdul mazood",
+                        "email": "www.machuzz123@gmail.com",
+                        "__v": 0
+                      },
+                      {
+                        "_id": "6825e44a651b00a43cc7ba",
+                        "name": "Admin",
+                        "email": "admin@finzee.com",
+                        "__v": 0
+                      },
+                      {
+                        "_id": "6825f3bccc1a621c2644d5",
+                        "name": "mazood",
+                        "email": "abdulmazood@finzee.com",
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/add": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register  User",
+        "description": "Logs in the user and returns a JWT token for authenticated API access.",
+        "operationId": "postapiauthadd",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "message": "User added successfully"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "mazood",
+                  "email": "abdulmazood@finzee.com",
+                  "password": "Mazood123@"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Login User",
+        "description": "Logs in the user and returns a JWT token for authenticated API access.",
+        "operationId": "postapiauthlogin",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "message": "Login successful",
+                    "token": "eyJhbGciOiInR5cCI6IkpXVCJ9.eyJ1c2VySWQi2NjMWE2MjFjMjE2NDRkNTEiLCJlbWFpbCI6ImFiZHVsbWF6b29kQGZpbnplZS5jb20iLCJpYXQiOjE3NDczMTkwMTF9.TeqCP2ImqcoTlAtU7PFdCddQWRW561MPUIDgQllhCAs",
+                    "user": {
+                      "id": "6825f3bccc1a621c21644d51",
+                      "name": "mazood",
+                      "email": "abdulmazood@finzee.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "email": "abdulmazood@finzee.com",
+                  "password": "Mazood3@"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/682370d79a6fa31df1c9e940": {
+      "delete": {
+        "tags": ["Auth"],
+        "summary": "Delete User",
+        "description": "",
+        "operationId": "deleteapiauth682370d79a6fa31df1c9e940",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "message": "User deleted"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/category": {
+      "get": {
+        "tags": ["Categories"],
+        "summary": "Get Categories",
+        "description": "",
+        "operationId": "getapicategory",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "category": [
+                      {
+                        "_id": "6825fa51230ff21ac74a3a0a",
+                        "userId": "6825f3bccc1a621c21644d51",
+                        "name": "Food",
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/category/add": {
+      "post": {
+        "tags": ["Categories"],
+        "summary": "Add Category",
+        "description": "",
+        "operationId": "postapicategoryadd",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "message": "Category added successfully"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "Food"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/category/6825fa51230ff21ac74a3a0a": {
+      "delete": {
+        "tags": ["Categories"],
+        "summary": "Delete Category",
+        "description": "",
+        "operationId": "deleteapicategory6825fa51230ff21ac74a3a0a",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "message": "Category deleted"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/transaction/analysis": {
+      "get": {
+        "tags": ["Transactions"],
+        "summary": "Get User Analysis",
+        "description": "",
+        "operationId": "getapitransactionanalysis",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "analysis": {
+                      "totalIncome": 0,
+                      "totalExpense": 1000,
+                      "balance": -1000
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": ["Transactions"],
+        "summary": "Get Transactions",
+        "description": "",
+        "operationId": "get",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "transactions": [
+                      {
+                        "_id": "6825faa4230ff21ac74a3a0c",
+                        "userId": "6825f3bccc1a621c21644d51",
+                        "title": "Food",
+                        "amount": 1000,
+                        "type": "Expense",
+                        "category": "Food",
+                        "note": "Birthday Treat",
+                        "createdAt": "2025-05-15T14:31:00.253Z",
+                        "updatedAt": "2025-05-15T14:31:00.253Z",
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/transaction/add": {
+      "post": {
+        "tags": ["Transactions"],
+        "summary": "Add Transaction",
+        "description": "",
+        "operationId": "postapitransactionadd",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "message": "Transaction added successfully"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "title": "Food",
+                  "amount": "1000",
+                  "type": "Expense",
+                  "category": "Food",
+                  "note": "Birthday Treat"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/transaction/6825faa4230ff21ac74a3a0c": {
+      "delete": {
+        "tags": ["Transactions"],
+        "summary": "Delete Transaction",
+        "description": "",
+        "operationId": "deleteapitransaction6825faa4230ff21ac74a3a0c",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "message": "Transaction deleted"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/budget": {
+      "get": {
+        "tags": ["Budget"],
+        "summary": "Get Budget",
+        "description": "",
+        "operationId": "getapibudget",
+        "parameters": [
+          {
+            "name": "month",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "April"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "budget": {
+                      "_id": "6825fc4a230ff21ac74a3a15",
+                      "userId": "6825f3bccc1a621c21644d51",
+                      "month": "April",
+                      "amount": 50000,
+                      "__v": 0
+                    },
+                    "currentExpense": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/budget/add": {
+      "post": {
+        "tags": ["Budget"],
+        "summary": "Add Budget",
+        "description": "",
+        "operationId": "postapibudgetadd",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "example": {
+                    "status": true,
+                    "message": "Budget added successfully"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "month": "April",
+                  "amount": "50000"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {},
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Endpoints for user registration, login, fetching users, and deleting user accounts. On successful login, a JWT token is returned for authenticated access to other APIs."
+    },
+    {
+      "name": "Categories",
+      "description": "APIs for managing user-specific spending categories. Users can fetch, add, and delete categories used to classify transactions."
+    },
+    {
+      "name": "Transactions",
+      "description": "Endpoints to manage financial transactions. Users can add new transactions, delete entries, and get an overview of spending vs income."
+    },
+    {
+      "name": "Budget",
+      "description": "APIs to manage user budgets. Allows setting monthly budgets and retrieving the budget summary along with current spending."
+    }
+  ]
+}
